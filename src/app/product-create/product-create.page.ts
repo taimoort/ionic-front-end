@@ -30,7 +30,6 @@ export class ProductCreatePage implements OnInit {
   ngOnInit() {
   }
   AlphaKeyUp(value){
-    alert('kam kar raha he');
     $('.'+value).val($('.'+value).val().toString().replace(/[^a-zA-Z \n\r\/,]+/g, ''));
   }
   IntKeyUp(value){
