@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar  color="tertiary">
+      <ion-title>Edit Product</ion-title>
+    </ion-toolbar>
+  </ion-header>
+   
+  <ion-content padding>
+   
+      <ion-item>
+          <ion-label>Product Name</ion-label>
+          <ion-input [(ngModel)]="data.product_name" class="valid1" (keyup)="AlphaKeyUp('valid1')" placeholder="Enter Product Name"></ion-input>
+        </ion-item>
+       
+        <ion-item>
+          <ion-label>Price</ion-label>
+          <ion-input [(ngModel)]="data.price" class="valid2" (keyup)="IntKeyUp('valid2')" placeholder="Enter Price"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+            <ion-label>Stock</ion-label>
+            <ion-input [(ngModel)]="data.stock" class="valid3" (keyup)="IntKeyUp('valid3')" placeholder="Enter Stock"></ion-input>
+        </ion-item>
+    
+          <ion-item>
+              <ion-label>Product Description</ion-label>
+              <ion-input [(ngModel)]="data.product_description" class="valid4"   placeholder="Enter Product Description"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label>Category</ion-label>
+                <ion-input [(ngModel)]="data.category" class="valid5" (keyup)="AlphaKeyUp('valid5')" placeholder="Enter Category"></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label>Barcode</ion-label>
+                  <ion-input [(ngModel)]="data.barcode" class="valid6" (keyup)="IntKeyUp('valid6')" placeholder="Enter Barcode"></ion-input>
+                </ion-item>
+    <ion-button (click)="update()" color="success" size="small">
+      Update
+    </ion-button>
+    <ion-button [routerLink]="[ '/dashboard']" color="danger" size="small">
+      Cancel
+    </ion-button>
+  </ion-content>

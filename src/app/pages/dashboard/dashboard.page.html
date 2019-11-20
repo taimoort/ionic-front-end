@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        
+      <ion-menu-button ></ion-menu-button>
+      <ion-button (click)="switchStyle()">
+        {{tableStlye}}
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+       <!-- <ion-button (click)="customRowClass = !customRowClass">
+          <ion-icon name="bulb" slot="icon-only"></ion-icon>
+        </ion-button>-->
+        
+      </ion-buttons>
+  
+    <ion-title>Products</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="user != undefined" >
+     <!-- Welcome {{ user["first_name"]  }} {{ user["last_name"]  }}-->
+      <div *ngIf="user">
+      <ion-button   routerLink='/create/{{user.id}}'>
+        Add Product
+      </ion-button>
+    </div>
+  </div>
+  
+  <ngx-datatable
+  
+    [rows]="userdata"
+    [ngClass]="tableStlye"
+    [rowHeight]="'50'"
+    [headerHeight]="50"
+    [columnMode]="'force'"
+    
+    [rowClass]="getRowClass.bind(this)"
+    >
+    
+    <ngx-datatable-column>
+      <ng-template let-column="column"  ngx-datatable-header-template>
+        Product Name  
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.product_name}}
+      </ng-template>
+  </ngx-datatable-column>
+    <ngx-datatable-column  name="Stock"></ngx-datatable-column>
+    <ngx-datatable-column name="Price"></ngx-datatable-column>
+    <ngx-datatable-column  >
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Product Description 
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+         <label id="lbldiscription">{{row.product_description}}</label> 
+      </ng-template>
+  </ngx-datatable-column>
+    <ngx-datatable-column name="Category"></ngx-datatable-column>
+    <ngx-datatable-column name="Barcode"></ngx-datatable-column>
+    <ngx-datatable-column>
+    <ng-template let-column="column"  ngx-datatable-header-template>
+       <label class="lbl"> Action </label> 
+    </ng-template>
+      <ng-template style="display: flex" let-row="row" let-value="value" ngx-datatable-cell-template>
+        <ion-button color="warning" size="small" routerLink='/edit/{{row.id}}'>
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+        <ion-button color="danger" size="small" (click)="delete(row)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ng-template>
+      
+      
+    </ngx-datatable-column>
+    
+  </ngx-datatable>
+  
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "Crud_Product",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
